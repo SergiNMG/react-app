@@ -1,0 +1,20 @@
+.tw-followCardContainer {
+  display: flex;
+  flex-direction: column;
+  place-content: left;
+  border: 1px solid #ffffff80;
+  border-radius: 16px;
+  padding: 6px 12px;
+  gap: 16px;
+  color: #fff;
+}
+
+.c-title {
+  margin: 2px 0 6px 0;
+}
+
+.c-showMore {
+  margin: 6px 0 0 2px;
+  color: #18a1d6;
+  cursor: pointer;
+}
