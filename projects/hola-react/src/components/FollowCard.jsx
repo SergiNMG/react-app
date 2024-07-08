@@ -1,5 +1,22 @@
 import "../styles/followCard.scss";
-export function FollowCard({ name, userName, formatUserName, isFollowing }) {
+import { useState } from "react";
+
+export function FollowCard({
+  name,
+  userName,
+  formatUserName,
+  initialIsFollowing,
+}) {
+  const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
+  const handleFollowClick = () => {
+    setIsFollowing(!isFollowing);
+  };
+
+  const textButton = isFollowing ? "Following" : "Follow";
+  const buttonClass = isFollowing
+    ? "tw-followCard__btn tw-followCard__btn--following"
+    : "tw-followCard__btn";
+
   return (
     <section className="tw-followCard">
       <header className="tw-followCard__header">
@@ -16,7 +33,9 @@ export function FollowCard({ name, userName, formatUserName, isFollowing }) {
         </div>
       </header>
       <aside>
-        <button className="tw-followCard__btn">Follow</button>
+        <button className={buttonClass} onClick={handleFollowClick}>
+          {textButton}
+        </button>
       </aside>
     </section>
   );

@@ -11,12 +11,12 @@ export function App() {
         name="Xilxas"
         userName="miguepg16"
         formatUserName={formatUserName}
-        isFollowing
       ></FollowCard>
       <FollowCard
         name="Sergi"
         userName="gomezXVI"
         formatUserName={formatUserName}
+        initialIsFollowing={true}
       ></FollowCard>
       <FollowCard
         name="Xbox Game Pass"
