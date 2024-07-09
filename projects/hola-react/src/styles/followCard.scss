@@ -33,17 +33,36 @@
     border-radius: 64px;
     padding: 6px 16px;
     font-weight: bold;
+    width: 100px;
     cursor: pointer;
 
     &--following {
-      background-color: #222;
+      background-color: transparent;
       color: #fff;
       border: 0.5px solid #ffffff80;
+    }
+
+    &--following:hover {
+      background-color: #ff20201a;
+      color: #ff2020;
+      border: 0.5px solid #ff2020;
+    }
+
+    &--stopFollow {
+      display: none;
+    }
+
+    &--following:hover &--stopFollow {
+      display: block;
+    }
+
+    &--following:hover &--following-text {
+      display: none;
     }
   }
 
   &__btn:hover {
-    background-color: #777777;
-    transition: 0.5s ease-in background-color;
+    opacity: 0.8;
+    transition: 0.5s ease-in opacity;
   }
 }

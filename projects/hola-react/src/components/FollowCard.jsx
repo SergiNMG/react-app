@@ -34,7 +34,10 @@ export function FollowCard({
       </header>
       <aside>
         <button className={buttonClass} onClick={handleFollowClick}>
-          {textButton}
+          <span className="tw-followCard__btn--following-text">
+            {textButton}
+          </span>
+          <span className="tw-followCard__btn--stopFollow">Unfollow</span>
         </button>
       </aside>
     </section>
