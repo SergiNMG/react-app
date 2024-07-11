@@ -1,0 +1,45 @@
+.l-page {
+  color: #fff;
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.c-cat {
+  display: flex;
+  flex-wrap: wrap;
+  place-items: center;
+  flex-direction: column;
+  border: 2px solid wheat;
+  border-radius: 10px;
+  background-color: #333;
+  gap: 16px;
+  padding: 8px 16px;
+  max-width: 64vw;
+
+  &__fact {
+    color: #fff;
+    font-style: italic;
+  }
+
+  &__img {
+    max-width: 32vh;
+    min-width: 12vh;
+    border: 2px solid wheat;
+    border-radius: 10px;
+  }
+}
+
+.btn-newCat {
+  padding: 4px 8px;
+  border: 2px solid wheat;
+  border-radius: 10px;
+  background-color: #333;
+}
+
+.btn-newCat:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.5s ease-in opacity;
+}
