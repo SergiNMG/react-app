@@ -1,24 +1,20 @@
 import { useEffect, useState } from "react";
 import "./styles/app.scss";
 import { getRandomFact } from "./services/factService";
+import { useCatImage } from "./hooks/useCatImage";
 
 export function App() {
-  const [fact, setFact] = useState();
-  const [imageUrl, setImageUrl] = useState();
+  const [fact, setFact] = useState("");
+  const imageUrl = useCatImage({ fact });
 
   useEffect(() => {
-    getNewCatAndFact();
+    getNewFact();
   }, []);
 
-  const getNewCatAndFact = async () => {
+  const getNewFact = async () => {
     try {
-      const randomFact = await getRandomFact();
-      setFact(randomFact);
-
-      const firstWord = randomFact.split(" ")[0];
-
-      const imageUrl = `https://cataas.com/cat/says/${firstWord}?fontSize=46&fontColor=blue`;
-      setImageUrl(imageUrl);
+      const fact = await getRandomFact();
+      setFact(fact);
     } catch (error) {
       console.error("Error while getting cat info", error);
     }
@@ -37,7 +33,7 @@ export function App() {
           />
         )}
       </div>
-      <button className="btn-newCat" onClick={getNewCatAndFact}>
+      <button className="btn-newCat" onClick={getNewFact}>
         <strong>Get New</strong>
       </button>
     </main>
