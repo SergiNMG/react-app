@@ -1,9 +1,18 @@
 .l-page {
   color: #fff;
   display: flex;
-  place-items: center;
   flex-direction: column;
+  place-items: center;
+  justify-content: space-between;
   gap: 4px;
+}
+
+.l-info {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 8px;
 }
 
 .c-cat {
@@ -16,7 +25,7 @@
   background-color: #333;
   gap: 16px;
   padding: 8px 16px;
-  max-width: 64vw;
+  max-width: 500px;
 
   &__fact {
     color: #fff;
@@ -32,6 +41,7 @@
 }
 
 .btn-newCat {
+  color: wheat;
   padding: 4px 8px;
   border: 2px solid wheat;
   border-radius: 10px;

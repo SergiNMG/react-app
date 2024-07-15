@@ -1,41 +1,35 @@
-import { useEffect, useState } from "react";
 import "./styles/app.scss";
-import { getRandomFact } from "./services/factService";
 import { useCatImage } from "./hooks/useCatImage";
+import { useCatFact } from "./hooks/useCatFact";
+import { Cat } from "./components/Cat";
 
 export function App() {
-  const [fact, setFact] = useState("");
-  const imageUrl = useCatImage({ fact });
-
-  useEffect(() => {
-    getNewFact();
-  }, []);
-
-  const getNewFact = async () => {
-    try {
-      const fact = await getRandomFact();
-      setFact(fact);
-    } catch (error) {
-      console.error("Error while getting cat info", error);
-    }
-  };
+  const { fact, refreshFact } = useCatFact("");
+  const { imageUrl } = useCatImage({ fact });
 
   return (
-    <main className="l-page">
-      <h1>Cat-App</h1>
-      <div className="c-cat">
-        {fact && <p className="c-cat__fact">{fact}</p>}
-        {imageUrl && (
-          <img
-            className="c-cat__img"
-            src={imageUrl}
-            alt={`Image extracted from the first word of ${fact}`}
-          />
-        )}
-      </div>
-      <button className="btn-newCat" onClick={getNewFact}>
-        <strong>Get New</strong>
-      </button>
+    <main>
+      <section className="l-info">
+        <h1>Cat-App</h1>
+        <button className="btn-newCat" onClick={refreshFact}>
+          <strong>Get New</strong>
+        </button>
+      </section>
+      <section className="l-page">
+        <div className="c-cat">
+          {fact && <p className="c-cat__fact">{fact}</p>}
+          {imageUrl && (
+            <img
+              className="c-cat__img"
+              src={imageUrl}
+              alt={`Image extracted from the first word of ${fact}`}
+            />
+          )}
+        </div>
+        <Cat></Cat>
+        <Cat></Cat>
+        <Cat></Cat>
+      </section>
     </main>
   );
 }
