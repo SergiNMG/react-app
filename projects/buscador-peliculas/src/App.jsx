@@ -1,15 +1,20 @@
 import "./App.scss";
 import { useMovies } from "./hooks/useMovies";
 import { Movies } from "./components/Movie";
-import { useRef } from "react";
+import { useSearch } from "./hooks/useSearch";
 
 function App() {
   const { movies } = useMovies();
-  const movieInputRef = useRef();
+  const { search, updateSearch, error } = useSearch();
 
-  const showInput = () => {
-    const value = movieInputRef.current.value;
-    console.log(value);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log({ search });
+  };
+
+  const handleChange = (event) => {
+    const newSearch = event.target.value;
+    updateSearch(newSearch);
   };
 
   return (
@@ -17,18 +22,26 @@ function App() {
       <header className="l-header">
         <h1>Movie Searcher</h1>
         <div>
-          <form className="c-form-movie-searcher">
+          <form className="c-form-movie-searcher" onSubmit={handleSubmit}>
             <input
-              ref={movieInputRef}
+              onChange={handleChange}
+              value={search}
               type="text"
-              name="movie-input"
-              id="movie-input"
+              name="movie"
+              id="movie"
               placeholder="Enter a movie"
+              style={{
+                border: "1px solid transparent",
+                borderColor: error ? "red" : "transparent",
+              }}
             />
-            <button onClick={showInput} type="submit">
-              Search
-            </button>
+            <button type="submit">Search</button>
           </form>
+          {error && (
+            <small>
+              <p className="c-form-movie-searcher__error">{error}</p>
+            </small>
+          )}
         </div>
       </header>
 

@@ -8,6 +8,10 @@
 .c-form-movie-searcher {
   display: flex;
   place-items: center;
+
+  &__error {
+    color: red;
+  }
 }
 
 .l-movies {
